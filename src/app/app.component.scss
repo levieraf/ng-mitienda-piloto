@@ -1,0 +1,20 @@
+nz-header,
+nz-footer {
+    background: #7dbcea;
+    color: #fff;
+    height: 64px;
+}
+
+nz-content {
+    height: calc(100vh - 64px - 64px);
+}
+
+nz-layout {
+    margin-bottom: 48px;
+    background: #fefefe;
+}
+
+nz-layout nz-layout,
+nz-layout:last-child {
+    margin: 0;
+}
