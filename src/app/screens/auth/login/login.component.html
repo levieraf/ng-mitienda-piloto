@@ -1,20 +1,23 @@
 <div class="wrapper-center">
-  <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-    <nz-form-item>
-      <nz-form-control nzErrorTip="El E-mail es invalido!">
-        <nz-input-group nzPrefixIcon="user">
-          <input type="email" nz-input formControlName="email" placeholder="E-mail" />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Ingresa tu contraseña!">
-        <nz-input-group nzPrefixIcon="lock">
-          <input type="password" nz-input formControlName="password" placeholder="Contraseña" />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" [disabled]="validateForm.invalid">Iniciar sesión</button>
-    ó <a routerLink="/auth/signup" class="nav-link" href="#">registrate ahora!</a>
-  </form>
+  <nz-card style="width:400px;" [nzBordered]="false" nzTitle="Login">
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="El E-mail es invalido!">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="email" nz-input formControlName="email" placeholder="E-mail" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Ingresa tu contraseña!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="password" placeholder="Contraseña" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" [disabled]="validateForm.invalid">Iniciar sesión</button>
+      ó <a routerLink="/signup" class="nav-link" href="#">registrate ahora!</a>
+    </form>
+  </nz-card>
 </div>
+

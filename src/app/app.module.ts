@@ -22,6 +22,7 @@ import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
 import { AngularFireModule } from '@angular/fire';
 
 import { environment } from 'src/environments/environment';
+import { HomeComponent } from './screens/home/home.component';
 
 registerLocaleData(es);
 
@@ -33,7 +34,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
   declarations: [
     AppComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
