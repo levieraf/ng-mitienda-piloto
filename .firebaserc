@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ng-mitienda-piloto": {
+      "hosting": {
+        "ng-mitienda-piloto": [
+          "ng-mitienda-piloto"
+        ]
+      }
+    }
+  }
+}

@@ -19,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
+import { AngularFireModule } from '@angular/fire';
+
+import { environment } from 'src/environments/environment';
 
 registerLocaleData(es);
 
@@ -39,7 +42,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    DemoNgZorroAntdModule
+    DemoNgZorroAntdModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }, { provide: NZ_ICONS, useValue: icons }],
   bootstrap: [AppComponent]

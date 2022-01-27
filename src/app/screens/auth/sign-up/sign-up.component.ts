@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,16 +10,34 @@ import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 })
 export class SignUpComponent implements OnInit {
   validateForm!: FormGroup;
-  captchaTooltipIcon: NzFormTooltipIcon = {
-    type: 'info-circle',
-    theme: 'twotone'
-  };
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private message: NzMessageService) { }
+
+  ngOnInit(): void {
+    this.validateForm = this.fb.group({
+      email: [null, [Validators.email, Validators.required]],
+      password: [null, [Validators.required]],
+      checkPassword: [null, [Validators.required, this.confirmationValidator]]
+    });
+  }
 
   submitForm(): void {
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
-    }
+    const { email, password } = this.validateForm.value;
+
+    this.authService
+      .register(email, password)
+      .then(response => {
+        console.info(response);
+        this.createMessage('success', 'Register completed!');
+      })
+      .catch(response => {
+        const {message} = response;
+        this.createMessage('error', message);
+      });
+  }
+
+  createMessage(type: string, message: string): void {
+    this.message.create(type, message);
   }
 
   updateConfirmValidator(): void {
@@ -34,14 +53,4 @@ export class SignUpComponent implements OnInit {
     }
     return {};
   };
-
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      email: [null, [Validators.email, Validators.required]],
-      password: [null, [Validators.required]],
-      checkPassword: [null, [Validators.required, this.confirmationValidator]]
-    });
-  }
 }
