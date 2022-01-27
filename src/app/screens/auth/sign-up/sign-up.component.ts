@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -11,7 +11,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignUpComponent implements OnInit {
   validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private message: NzMessageService) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private message: NzMessageService, private router: Router) {
+    if (this.authService.isUserLoggedIn()) {
+      this.router.navigate(['home'])
+    }
+  }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -26,8 +30,8 @@ export class SignUpComponent implements OnInit {
 
     this.authService
       .register(email, password)
-      .then(response => {
-        console.info(response);
+      .then(() => {
+        this.router.navigate(['home']);
         this.createMessage('success', 'Register completed!');
       })
       .catch(response => {

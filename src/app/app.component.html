@@ -1,7 +1,10 @@
 <nz-layout>
-    <nz-header>Mi tienda piloto</nz-header>
+    <nz-header>
+        <div *ngIf="(authService.userLoggedIn)">
+            <app-navbar></app-navbar>
+        </div>
+    </nz-header>
     <nz-content>
         <router-outlet></router-outlet>
     </nz-content>
-    <nz-footer>Version 1.0</nz-footer>
 </nz-layout>

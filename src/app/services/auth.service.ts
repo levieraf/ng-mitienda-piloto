@@ -5,7 +5,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private angularFireAuth: AngularFireAuth) { }
+  userLoggedIn: boolean;
+
+  constructor(private angularFireAuth: AngularFireAuth) {
+    this.userLoggedIn = false;
+    this.angularFireAuth.onAuthStateChanged((user) => {
+      this.userLoggedIn = !!user
+    });
+  }
 
   async login(email: string, password: string) {
     return await this.angularFireAuth.signInWithEmailAndPassword(email, password);
@@ -13,5 +20,14 @@ export class AuthService {
 
   async register(email: string, password: string) {
     return await this.angularFireAuth.createUserWithEmailAndPassword(email, password);
+  }
+
+  logout(): void {
+    this.userLoggedIn = false;
+    this.angularFireAuth.signOut();
+  }
+
+  isUserLoggedIn(): boolean {
+    return this.userLoggedIn
   }
 }

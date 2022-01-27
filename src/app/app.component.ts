@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-mitienda-piloto';
+  constructor(public authService: AuthService, private router: Router) {
+    if (!this.authService.isUserLoggedIn()) {
+        this.router.navigate(['/login'])
+    }
+  }
 }

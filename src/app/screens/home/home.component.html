@@ -1,1 +1,23 @@
-<p>home works!</p>
+<div style="margin: 0px 20px;">
+    <nz-table #basicTable [nzData]="listOfCart">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{data.id}}</td>
+            <td>{{data.status}}</td>
+            <td>
+              <a>Action</a>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a>Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+</div>

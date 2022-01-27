@@ -23,6 +23,7 @@ import { AngularFireModule } from '@angular/fire';
 
 import { environment } from 'src/environments/environment';
 import { HomeComponent } from './screens/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 registerLocaleData(es);
 
@@ -36,6 +37,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     SignUpComponent,
     LoginComponent,
     HomeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
