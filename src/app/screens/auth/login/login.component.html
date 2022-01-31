@@ -1,23 +1,25 @@
-<div class="wrapper-center bgc-grey">
-  <nz-card [nzBordered]="false" nzTitle="Login">
-    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-      <nz-form-item>
-        <nz-form-control nzErrorTip="El E-mail es invalido!">
-          <nz-input-group nzPrefixIcon="user">
-            <input type="email" nz-input formControlName="email" placeholder="E-mail" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Ingresa tu contraseña!">
-          <nz-input-group nzPrefixIcon="lock">
-            <input type="password" nz-input formControlName="password" placeholder="Contraseña" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"
-        [disabled]="validateForm.invalid">Iniciar sesión</button>
-      ó <a class="nav-link" routerLink="/register">registrate ahora!</a>
-    </form>
-  </nz-card>
+<div nz-row class="mt-15">
+  <div nz-col nzSpan="24" [nzSm]="{ span: 12, offset: 6 }" [nzMd]="{ span: 8, offset: 8 }">
+    <nz-card [nzBordered]="true" nzTitle="Login">
+      <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="El E-mail es invalido!">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="email" nz-input formControlName="email" placeholder="E-mail" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Ingresa tu contraseña!">
+            <nz-input-group nzPrefixIcon="lock">
+              <input type="password" nz-input formControlName="password" placeholder="Contraseña" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"
+          [disabled]="validateForm.invalid">Iniciar sesión</button>
+        ó <a class="nav-link" routerLink="/register">registrate ahora!</a>
+      </form>
+    </nz-card>
+  </div>
 </div>

@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private message: NzMessageService, private router: Router) {
     if (this.authService.isUserLoggedIn()) {
-      this.router.navigate(['home'])
+      this.router.navigate(['/'])
     }
   }
 

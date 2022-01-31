@@ -1,40 +1,42 @@
-<div class="wrapper-center bgc-grey">
-    <nz-card [nzBordered]="false" nzTitle="Registro">
-        <form nz-form nzLayout="vertical" [formGroup]="validateForm" (ngSubmit)="submitForm()">
-            <nz-form-item>
-                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
-                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="El E-mail es invalido!">
-                    <input nz-input formControlName="email" id="email" />
-                </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Contraseña</nz-form-label>
-                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Ingresa la contraseña!">
-                    <input nz-input type="password" id="password" formControlName="password"
-                        (ngModelChange)="updateConfirmValidator()" />
-                </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>Confirmar contraseña
-                </nz-form-label>
-                <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
-                    <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
-                    <ng-template #errorTpl let-control>
-                        <ng-container *ngIf="control.hasError('required')">
-                            Ingresa una contraseña!
-                        </ng-container>
-                        <ng-container *ngIf="control.hasError('confirm')">
-                            Las contraseñas son incorrectas!
-                        </ng-container>
-                    </ng-template>
-                </nz-form-control>
-            </nz-form-item>
-            <nz-form-item nz-row class="register-area">
-                <nz-form-control>
-                    <button nz-button nzType="primary" [disabled]="validateForm.invalid">Registrar</button>
-                    ó <a routerLink="/login" class="nav-link" href="#">¿Ya posees una cuenta?</a>
-                </nz-form-control>
-            </nz-form-item>
-        </form>
-    </nz-card>
+<div nz-row class="mt-15">
+    <div nz-col nzSpan="16" nzOffset="4">
+        <nz-card [nzBordered]="true" nzTitle="Registro">
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                <nz-form-item>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="El E-mail es invalido!">
+                        <input nz-input formControlName="email" id="email" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Contraseña</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Ingresa la contraseña!">
+                        <input nz-input type="password" id="password" formControlName="password"
+                            (ngModelChange)="updateConfirmValidator()" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>Confirmar contraseña
+                    </nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+                        <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
+                        <ng-template #errorTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')">
+                                Ingresa una contraseña!
+                            </ng-container>
+                            <ng-container *ngIf="control.hasError('confirm')">
+                                Las contraseñas son incorrectas!
+                            </ng-container>
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item nz-row class="register-area">
+                    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                        <button nz-button nzType="primary" [disabled]="validateForm.invalid">Registrar</button>
+                        ó <a routerLink="/login" class="nav-link" href="#">¿Ya posees una cuenta?</a>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </nz-card>
+    </div>
 </div>
