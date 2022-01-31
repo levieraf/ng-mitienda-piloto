@@ -1,5 +1,5 @@
-<div class="wrapper-center">
-  <nz-card style="width:400px;" [nzBordered]="false" nzTitle="Login">
+<div class="wrapper-center bgc-grey">
+  <nz-card [nzBordered]="false" nzTitle="Login">
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
       <nz-form-item>
         <nz-form-control nzErrorTip="El E-mail es invalido!">
@@ -15,9 +15,9 @@
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
-      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" [disabled]="validateForm.invalid">Iniciar sesión</button>
-      ó <a class="nav-link" routerLink="/signup">registrate ahora!</a>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"
+        [disabled]="validateForm.invalid">Iniciar sesión</button>
+      ó <a class="nav-link" routerLink="/register">registrate ahora!</a>
     </form>
   </nz-card>
 </div>
-

@@ -3,18 +3,17 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   validateForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private message: NzMessageService, private router: Router) {
-    if (this.authService.isUserLoggedIn()) {
-      this.router.navigate(['home'])
-    }
+
   }
 
   ngOnInit(): void {
@@ -35,7 +34,7 @@ export class SignUpComponent implements OnInit {
         this.createMessage('success', 'Register completed!');
       })
       .catch(response => {
-        const {message} = response;
+        const { message } = response;
         this.createMessage('error', message);
       });
   }

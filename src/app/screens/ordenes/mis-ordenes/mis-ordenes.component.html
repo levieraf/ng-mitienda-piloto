@@ -1,0 +1,24 @@
+<div class="container-actions">
+    <h1>Mis Ordenes</h1>
+    
+    <a routerLink="/nueva-orden">Nueva Orden</a>
+</div>
+
+<nz-table #basicTable [nzData]="listOfCart" [nzShowPagination]="false">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+            <td>{{data.id}}</td>
+            <td>{{data.status}}</td>
+            <td>
+                <a>Eliminar Orden</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

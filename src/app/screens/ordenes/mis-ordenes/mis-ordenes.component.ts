@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CartStatusType } from 'src/app/enums/cart_status_type';
-import { Cart } from '../../models/cart.model';
+import { Cart } from 'src/app/models/cart.model';
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-mis-ordenes',
+  templateUrl: './mis-ordenes.component.html',
+  styleUrls: ['./mis-ordenes.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class MisOrdenesComponent implements OnInit {
   listOfCart: Cart[] = [
     {
       id: 1,
@@ -22,6 +23,9 @@ export class HomeComponent implements OnInit {
     }
   ];
 
+  constructor() { }
+
   ngOnInit(): void {
   }
+
 }

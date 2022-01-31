@@ -3,14 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './screens/auth/sign-up/sign-up.component';
+
+
 import { LoginComponent } from './screens/auth/login/login.component';
+import { RegisterComponent } from './screens/auth/register/register.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { LayoutComponent } from './screens/layout/layout.component';
+
 import { es_ES } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
-
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
-import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 
@@ -22,8 +26,10 @@ import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
 import { AngularFireModule } from '@angular/fire';
 
 import { environment } from 'src/environments/environment';
-import { HomeComponent } from './screens/home/home.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+
+// import { StoreModule } from '@ngrx/store';
+
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 registerLocaleData(es);
 
@@ -34,9 +40,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent,
     LoginComponent,
-    HomeComponent,
+    RegisterComponent,
+    LayoutComponent,
     NavbarComponent,
   ],
   imports: [
@@ -46,8 +52,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     DemoNgZorroAntdModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }, { provide: NZ_ICONS, useValue: icons }],
   bootstrap: [AppComponent]
