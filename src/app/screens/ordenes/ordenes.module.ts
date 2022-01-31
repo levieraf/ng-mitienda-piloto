@@ -9,7 +9,7 @@ import { DemoNgZorroAntdModule } from 'src/app/ng-zorro-antd.module';
 @NgModule({
   declarations: [
     MisOrdenesComponent,
-    NuevaOrdenComponent
+    NuevaOrdenComponent,
   ],
   imports: [
     CommonModule,

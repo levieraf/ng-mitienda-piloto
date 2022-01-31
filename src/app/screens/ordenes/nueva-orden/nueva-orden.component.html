@@ -1,1 +1,33 @@
-<p>nueva-orden works!</p>
+<div class="container-actions">
+    <h1>Nueva Orden</h1>
+
+    <a (click)="completarOrden()">Completar Orden</a>
+</div>
+
+<nz-table #basicTable [nzData]="products" [nzShowPagination]="false">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of basicTable.data">
+            <td>
+                {{producto.nombre}} - {{producto.sku}}
+                <div>
+                    {{producto.descripcion}}
+                </div>
+            </td>
+            <td>
+                <button>
+                    -
+                </button>
+                <input type="text" style>
+                <button>
+                    +
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

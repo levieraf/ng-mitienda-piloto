@@ -6,6 +6,11 @@ export const setCarts = createAction(
     props<{ carts: Cart[] }>()
 )
 
+export const addCart = createAction(
+    '[Cart] Add Carts',
+    props<{ cart: Cart }>()
+)
+
 export const destroyCars = createAction(
     '[Cart] Destroy Carts'
 )

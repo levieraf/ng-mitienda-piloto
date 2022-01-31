@@ -4,8 +4,8 @@ export class Cart {
     public id: number;
     public status: CartStatusType;
 
-    constructor(id: number) {
-        this.id = id;
+    constructor() {
+        this.id = Math.floor((Math.random() * 100 + 1 - 1) + 1);
         this.status = CartStatusType.Pending;
     }
 }

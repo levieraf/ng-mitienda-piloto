@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Cart } from 'src/app/models/cart.model';
+import * as cartActions from 'src/app/ngrx/actions/carts.actions';
 import { AppState } from 'src/app/ngrx/app.reducer';
 
 @Component({
@@ -12,15 +14,21 @@ export class MisOrdenesComponent implements OnInit {
 
   carts: Cart[] = [];
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private router: Router) { }
 
   ngOnInit(): void {
-    this.store.select('carts').subscribe(cartStore => {
-      this.carts = cartStore.carts;
+    this.store.select('carts').subscribe(globalState => {
+      this.carts = globalState.carts;
     });
   }
 
   eliminarOrden(cart: Cart) {
     console.info(cart);
+  }
+
+  nuevaOrden() {
+    const cart = new Cart();
+    this.store.dispatch(cartActions.addCart({ cart }));
+    this.router.navigate(['/nueva-orden']);
   }
 }

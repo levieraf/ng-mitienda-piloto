@@ -1,7 +1,7 @@
 <div class="container-actions">
     <h1>Mis Ordenes</h1>
 
-    <a routerLink="/nueva-orden">Nueva Orden</a>
+    <a (click)="nuevaOrden()">Nueva Orden</a>
 </div>
 
 <nz-table #basicTable [nzData]="carts" [nzShowPagination]="false">
