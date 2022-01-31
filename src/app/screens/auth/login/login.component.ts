@@ -10,11 +10,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
+  loading: boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private message: NzMessageService, private router: Router) {
-    if (this.authService.isUserLoggedIn()) {
-      this.router.navigate(['/'])
-    }
+
   }
 
   ngOnInit(): void {
@@ -27,15 +26,18 @@ export class LoginComponent implements OnInit {
   submitForm(): void {
     const { email, password } = this.validateForm.value;
 
+    this.loading = true;
     this.authService
       .login(email, password)
-      .then(response => {
-        this.router.navigate(['home']);
+      .then(() => {
+        this.loading = false;
+        this.router.navigate(['/']);
       })
       .catch(response => {
+        this.loading = false;
         const { message } = response;
         this.createMessage('error', message);
-      });
+      })
   }
 
   createMessage(type: string, message: string): void {

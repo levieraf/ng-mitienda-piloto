@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   validateForm!: FormGroup;
+  loading: boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private message: NzMessageService, private router: Router) {
 
@@ -27,13 +28,16 @@ export class RegisterComponent implements OnInit {
   submitForm(): void {
     const { email, password } = this.validateForm.value;
 
+    this.loading = true;
     this.authService
       .register(email, password)
       .then(() => {
-        this.router.navigate(['home']);
+        this.loading = false;
+        this.router.navigate(['/']);
         this.createMessage('success', 'Register completed!');
       })
       .catch(response => {
+        this.loading = false;
         const { message } = response;
         this.createMessage('error', message);
       });

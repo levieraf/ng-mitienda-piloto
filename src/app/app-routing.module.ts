@@ -3,13 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './screens/auth/login/login.component';
 import { RegisterComponent } from './screens/auth/register/register.component';
 import { LayoutComponent } from './screens/layout/layout.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
     path: '', component: LayoutComponent,
-    loadChildren: () => import('./screens/ordenes/ordenes.module').then(m => m.OrdenesModule)
+    loadChildren: () => import('./screens/ordenes/ordenes.module').then(m => m.OrdenesModule),
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '' },
 ];

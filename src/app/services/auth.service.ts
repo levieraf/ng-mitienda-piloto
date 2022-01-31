@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +14,13 @@ export class AuthService {
     });
   }
 
+
+  initAuthListener() {
+    this.angularFireAuth.authState.subscribe(firebaseUser => {
+      console.info(firebaseUser);
+    });
+  }
+
   async login(email: string, password: string) {
     return await this.angularFireAuth.signInWithEmailAndPassword(email, password);
   }
@@ -22,12 +29,13 @@ export class AuthService {
     return await this.angularFireAuth.createUserWithEmailAndPassword(email, password);
   }
 
-  logout(): void {
-    this.userLoggedIn = false;
-    this.angularFireAuth.signOut();
+  async logout() {
+    return await this.angularFireAuth.signOut();
   }
 
-  isUserLoggedIn(): boolean {
-    return this.userLoggedIn
+  isAuth() {
+    return this.angularFireAuth.authState.pipe(
+      map(firebaseUser => !!firebaseUser)
+    )
   }
 }
