@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CartStatusType } from 'src/app/enums/cart_status_type';
+import { Store } from '@ngrx/store';
 import { Cart } from 'src/app/models/cart.model';
+import { AppState } from 'src/app/ngrx/app.reducer';
 
 @Component({
   selector: 'app-mis-ordenes',
@@ -8,24 +9,18 @@ import { Cart } from 'src/app/models/cart.model';
   styleUrls: ['./mis-ordenes.component.scss']
 })
 export class MisOrdenesComponent implements OnInit {
-  listOfCart: Cart[] = [
-    {
-      id: 1,
-      status: CartStatusType.Completed,
-    },
-    {
-      id: 2,
-      status: CartStatusType.Pending,
-    },
-    {
-      id: 3,
-      status: CartStatusType.Pending,
-    }
-  ];
 
-  constructor() { }
+  carts: Cart[] = [];
+
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.store.select('carts').subscribe(carts => {
+      this.carts = carts;
+    });
   }
 
+  eliminarOrden(cart: Cart) {
+    console.info(cart);
+  }
 }

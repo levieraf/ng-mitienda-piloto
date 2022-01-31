@@ -1,6 +1,11 @@
 import { CartStatusType } from '../enums/cart_status_type';
 
-export interface Cart {
-    id: number;
-    status: CartStatusType;
+export class Cart {
+    public id: number;
+    public status: CartStatusType;
+
+    constructor(id: number) {
+        this.id = id;
+        this.status = CartStatusType.Pending;
+    }
 }

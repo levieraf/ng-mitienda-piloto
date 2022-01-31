@@ -1,10 +1,10 @@
 <div class="container-actions">
     <h1>Mis Ordenes</h1>
-    
+
     <a routerLink="/nueva-orden">Nueva Orden</a>
 </div>
 
-<nz-table #basicTable [nzData]="listOfCart" [nzShowPagination]="false">
+<nz-table #basicTable [nzData]="carts" [nzShowPagination]="false">
     <thead>
         <tr>
             <th>#</th>
@@ -13,11 +13,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let data of basicTable.data">
-            <td>{{data.id}}</td>
-            <td>{{data.status}}</td>
+        <tr *ngFor="let cart of basicTable.data">
+            <td>{{cart.id}}</td>
+            <td>{{cart.status}}</td>
             <td>
-                <a>Eliminar Orden</a>
+                <a (click)="eliminarOrden(cart)">Eliminar Orden</a>
             </td>
         </tr>
     </tbody>

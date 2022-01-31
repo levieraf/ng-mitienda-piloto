@@ -30,6 +30,8 @@ import { environment } from 'src/environments/environment';
 // import { StoreModule } from '@ngrx/store';
 
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 registerLocaleData(es);
 
@@ -54,7 +56,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    DemoNgZorroAntdModule,
+    DemoNgZorroAntdModule
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }, { provide: NZ_ICONS, useValue: icons }],
   bootstrap: [AppComponent]
