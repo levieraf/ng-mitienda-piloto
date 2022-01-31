@@ -1,18 +1,20 @@
-import { Action, createReducer, on } from "@ngrx/store";
+import { createReducer, on } from "@ngrx/store";
 import { Cart } from "src/app/models/cart.model";
-import { createCart } from "../actions/carts.actions";
+import { destroyCars, setCarts } from "../actions/carts.actions";
 
+export interface State {
+    carts: Cart[];
+}
 
-const initialCartsState: Cart[] = [
-    new Cart(1),
-    new Cart(2),
-    new Cart(3),
-];
+const initialCartsState: State = {
+    carts: [],
+};
 
 const _cartsReducer = createReducer(initialCartsState,
-    on(createCart, (state, { id }) => [...state, new Cart(id)])
+    on(setCarts, (state, { carts }) => ({ ...state, carts: [...carts] })),
+    on(destroyCars, (state) => ({ ...state, carts: [] })),
 );
 
-export function cartsReducer(state: Cart[] | undefined, action: Action) {
+export function cartsReducer(state, action) {
     return _cartsReducer(state, action);
 }

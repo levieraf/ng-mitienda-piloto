@@ -15,8 +15,8 @@ export class MisOrdenesComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.store.select('carts').subscribe(carts => {
-      this.carts = carts;
+    this.store.select('carts').subscribe(cartStore => {
+      this.carts = cartStore.carts;
     });
   }
 

@@ -1,11 +1,16 @@
 import { ActionReducerMap } from "@ngrx/store";
-import { Cart } from "../models/cart.model";
-import { cartsReducer } from "./reducers/carts.reducers";
+import * as cartReducer from "./reducers/carts.reducers";
+import * as productReducer from "./reducers/products.reducers";
+import * as auth from "./reducers/user.reducers";
 
 export interface AppState {
-    carts: Cart[]
+    carts: cartReducer.State,
+    user: auth.State,
+    products: productReducer.State
 }
 
 export const AppReducers: ActionReducerMap<AppState> = {
-    carts: cartsReducer
+    carts: cartReducer.cartsReducer,
+    user: auth.userReducer,
+    products: productReducer.cartsReducer
 }
